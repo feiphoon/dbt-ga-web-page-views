@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+    - name: dbt_source
+      tables:
+        - name: ga_17
+          description: Incoming GA Data in JSON format
+          columns:
+            - name: visitId
+              description: VisitId unique only to the user
+              tests:
+                - not_null
+            - name: visitStartTime
+              description: Start time for the visit in epoch time
+              tests:
+                - not_null
+            - name: date
+              description: Date of the visit
+              tests:
+                - not_null
+            - name: fullVisitorId
+              description: Unique id for the visitor
+              tests:
+                - not_null
+            - name: channelGrouping
+              description: No clue
+            - name: totals.visits
+              description: Number of visits
+            - name: customDimensions
+              description: Custom things
