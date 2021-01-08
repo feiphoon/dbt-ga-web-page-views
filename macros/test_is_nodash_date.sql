@@ -1,3 +1,4 @@
+{# Check that a string date field always consists of 8 numbers only. #}
 {% macro test_is_nodash_date(model, column_name) %}
 
 with validation as (
@@ -9,8 +10,9 @@ with validation as (
 validation_errors as (
   select
     nodash_date_field
+    , regexp_count(nodash_date_field, '^[0-9]{8}$') as regexp_count
   from validation
-  where nodash_date_field like '^[1-2][0-9][0-9][0-9][0-1][0-9][0-3][0-9]$'
+  where regexp_count = 0
 )
 
 select count(*)
