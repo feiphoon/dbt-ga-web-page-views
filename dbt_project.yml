@@ -36,7 +36,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
     dbt_ga_web_page_views:
       # Applies to all files under models/example/
-      sources:
-        materialized: ephemeral
-      materialized: view
-      bind: false
+      staging:
+        materialized: view
+        bind: false
+      core:
+        materialized: table
