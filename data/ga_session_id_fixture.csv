@@ -1,0 +1,6 @@
+date, fullVisitorId, visitId, session_id
+x,y,z,xyz
+2,4,6,246
+2020,hello,blah,2020helloblah
+x,,s,xs
+,6,,6

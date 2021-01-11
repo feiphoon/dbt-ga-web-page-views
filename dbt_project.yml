@@ -41,3 +41,8 @@ models:
         bind: false
       core:
         materialized: table
+
+seeds:
+  dbt_ga_web_page_views:
+    +enabled: true
+    +schema: seed_data
