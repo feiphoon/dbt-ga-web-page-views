@@ -1,4 +1,4 @@
-{{ config(materialized='table', pre_hook=["SET json_serialization_enable TO true"]) }}
+{{ config(materialized='view', pre_hook=["SET json_serialization_enable TO true"]) }}
 WITH hits as (
   SELECT
     ga.session_id

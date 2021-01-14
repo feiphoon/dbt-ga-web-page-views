@@ -1,4 +1,4 @@
-{{ config(materialized='table', sort='session_id', dist='session_id', pre_hook=["SET json_serialization_enable TO true"]) }}
+{{ config(materialized='view', sort='session_id', dist='session_id', pre_hook=["SET json_serialization_enable TO true"]) }}
 SELECT
     {{ ga_session_id("ga") }}
     ,JSON_ARRAY_LENGTH(ga.hits, true) AS number_of_hits
