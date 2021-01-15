@@ -1,4 +1,4 @@
-{{ config(materialized='table', sort='session_id', dist='session_id') }}
+{{ config(materialized='table', sort=['session_id', 'hit_id'], dist=['session_id', 'hit_id']) }}
 SELECT
     {{ ga_session_id("ga") }}
     ,{{ hit_id("session_id", "hits") }}

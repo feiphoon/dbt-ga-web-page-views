@@ -1,3 +1,4 @@
+-- This is a wide table but it runs in reasonable time
 SELECT
     {{ ga_session_id("ga") }}
     ,{{ dbt_utils.pivot(
