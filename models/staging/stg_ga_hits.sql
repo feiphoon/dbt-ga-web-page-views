@@ -1,7 +1,8 @@
+{{ config(materialized='table', sort=['session_id', 'hit_id'], dist=['session_id', 'hit_id']) }}
 SELECT
     {{ ga_session_id("ga") }}
     ,{{ hit_id("session_id", "hits") }}
-    ,hits.hitNumber AS hit_number
+    ,hits.hitNumber::int AS hit_number
     ,hits.type AS hit_type 
     ,hits.hour AS hit_hour
     ,hits.minute AS hit_minute
@@ -16,4 +17,4 @@ SELECT
     ,hits.contentGroup.contentGroup2 AS content_group
     ,hits.contentGroup.previousContentGroup2 AS previous_content_group
 FROM {{ source('dbt_source', 'ga_17') }} ga
-LEFT JOIN ga.hits hits ON TRUE
+INNER JOIN ga.hits hits ON TRUE
