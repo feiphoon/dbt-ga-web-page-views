@@ -1,4 +1,4 @@
-{% macro fct_ga_sessions_model(model_name, model_schema=none, is_source=false) %}
+{% macro fct_ga_sessions_model(model_name, model_package=none, is_source=false) %}
 SELECT
   ga.session_id
   ,ga.visit_date
@@ -15,5 +15,5 @@ SELECT
   ,ga.total_time_on_site
   ,ga.total_lead_transactions
   ,ga.unique_screenviews
-FROM {{ choose_ref_function(model_name, model_schema, is_source) }} ga
+FROM {{ choose_ref_function(model_name, model_package, is_source) }} ga
 {% endmacro %}

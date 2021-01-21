@@ -13,7 +13,7 @@ UNION ALL
 SELECT
     * 
 FROM (
-    SELECT * FROM {{ ref('fct_ga_sessions_dodgy_expected') }}
+    SELECT * FROM {{ ref('fct_ga_sessions_expected') }}
 
     EXCEPT
 
