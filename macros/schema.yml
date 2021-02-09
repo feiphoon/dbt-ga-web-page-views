@@ -1,0 +1,11 @@
+version: 2
+
+macros:
+  - name: is_nodash_date
+    arguments:
+      - name: model
+        type: table
+        description: A model
+      - name: column_name
+        type: column name or expression
+        description: "The name of a column, or an expression — anything that can be `select`-ed as a column"

@@ -1,0 +1,1 @@
+{{ fct_ga_sessions_model('stg_ga_sessions') }}

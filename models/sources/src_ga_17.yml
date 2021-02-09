@@ -1,0 +1,71 @@
+version: 2
+
+sources:
+    - name: dbt_source
+      tables:
+        - name: ga_17
+          description: Incoming GA Data in JSON format
+          columns:
+            - name: visitId
+              description: VisitId unique only to the user
+              type: string
+              tests:
+                - not_null
+            - name: visitStartTime
+              description: Start time for the visit in epoch time
+              type: string
+              tests:
+                - not_null
+            - name: date
+              description: Date of the visit in the format YYYYMMDD
+              type: string
+              tests:
+                - not_null
+                - is_nodash_date
+            - name: fullVisitorId
+              description: Unique id for the visitor
+              type: string
+              tests:
+                - not_null
+            - name: channelGrouping
+              description: No clue
+              type: string
+            - name: customDimensions
+              description: User-level or session-level custom dimensions that are set for a session
+              type: array
+            - name: totals
+              description: Collection of aggregate values across the session
+              type: struct
+            - name: totals.visits
+              description: Number of visits across the session
+              type: string
+            - name: totals.transactions
+              description: Number of ecommerce transactions in the session
+              type: string
+            - name: totals.bounces
+              description: Number of bounces in the session
+              type: string
+            - name: device
+              description: Device information
+              type: struct
+            - name: device.deviceCategorys
+              description: Device category
+              type: string
+            - name: device.operatingSystem
+              description: Device OS
+              type: string
+            - name: trafficSource
+              description: Traffic source from which the session originated
+              type: struct
+            - name: trafficSource.source
+              description: Something
+              type: struct
+            - name: trafficSource.medium
+              description: Something
+              type: struct
+            - name: trafficSource.campaign
+              description: The campaign value. Usually set by the utm_campaign URL parameter.
+              type: struct
+            - name: hits
+              description: Something
+              type: array
